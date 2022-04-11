@@ -1,0 +1,307 @@
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fcde67;
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  background-color: #fcde67;
+}
+
+.nav .nav-logo {
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Bangers', cursive;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #5bccf6;
+          text-decoration-color: #5bccf6;
+  text-underline-offset: 1px;
+}
+
+.nav .nav__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav .nav__items p {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.nav .nav__items .nav__items-button {
+  background: none;
+  border: none;
+  color: #5bccf6;
+  padding: 5px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.nav .nav__items .nav__items-button p {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.input-section {
+  margin: 50px 0;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.input-section .formCheckVaild {
+  display: none;
+  color: #da1010;
+  margin-bottom: 15px;
+}
+
+.input-section .addform-item__button {
+  background: none;
+  padding: 3;
+  margin: 0;
+  border: none;
+  color: #5bccf6;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.input-section .addForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 800px;
+}
+
+.input-section .addForm .addform-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 10px;
+}
+
+.input-section .addForm textarea {
+  height: 30px;
+  border: none;
+  background-color: #fcde67;
+  border-bottom: 2px solid #5bccf6;
+}
+
+.input-section .addForm textarea:focus {
+  outline: none;
+}
+
+.input-section input {
+  height: 30px;
+  border: none;
+  background-color: #fcde67;
+  border-bottom: 2px solid #5bccf6;
+}
+
+.input-section input:focus {
+  outline: none;
+}
+
+.input-section select {
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid #5bccf6;
+  background-color: #fcde67;
+  font-weight: bold;
+}
+
+.input-section select:focus {
+  outline: none;
+}
+
+.balance {
+  padding: 20px;
+}
+
+.balance input {
+  height: 30px;
+  border: none;
+  margin: 0 20px;
+  border-bottom: 2px solid #5bccf6;
+  background-color: #fcde67;
+}
+
+.balance input:focus {
+  outline: none;
+}
+
+.balance .balance-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.input-section--show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bill-section {
+  margin: 30px auto;
+  width: 60%;
+  min-height: 100px;
+}
+
+.bill-section .bill-section_area {
+  text-transform: uppercase;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.bill-section .bill-section_area .bill-section--balance {
+  font-size: 3rem;
+}
+
+.bill-section .bill-section_area .bill-section--balance_item1 {
+  color: #e2302a;
+  font-size: 1.2rem;
+  margin: 6px 0;
+}
+
+.bill-section .bill-section_area .bill-section--balance_item2 {
+  color: #08b834;
+  font-size: 1.2rem;
+}
+
+.bill-section .bill-section--new {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  padding: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  border: 3px solid #5bccf6;
+}
+
+.bill-section .bill-section--new .bill-section--new-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bill-section .bill-section--new .additionalInfo {
+  height: 30px;
+  border: none;
+}
+
+.section-chart {
+  display: none;
+  position: absolute;
+  top: 0;
+}
+
+.section-chart .chart-container {
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
+}
+
+.section-chart .section-chart-btn {
+  width: 50%;
+  margin-right: 300px;
+  margin-bottom: 20px;
+}
+
+.section-chart .section-chart-btn .chart-btn-hide {
+  background: none;
+  border: 5px solid #5bccf6;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.chart-container_show {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fcde67;
+}
+
+.section-chart-btn {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 800px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.section-chart-btn .chart-btn {
+  background: none;
+  border: 5px solid #5bccf6;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=main.css.map */

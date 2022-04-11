@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Śledzenie rachunków</title>
+    <script src="https://kit.fontawesome.com/46e335fb6b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Bill Tracker</p>
+            </div>
+            <div class="nav__items">
+                <button class="nav__items-button"><i class="far fa-plus-square"></i></button>
+                <p>śledź swoje rachunki</p>
+            </div>
+        </nav>
+    
+    <main class="main">
+        <div class="input-section">
+            <h2 class="formCheckVaild">UZUPEŁNIJ WSZYTKIE POLA!</h2>
+            <form class="addForm">
+                <div class="addform-item">
+                    <!-- <label for="cost">kwota</label> -->
+                    <input type="number" id="cost" name="cost" placeholder="kwota">
+                </div>
+                <div class="addform-item">
+                <!-- <label for="pet-select">Wybierz grupę artykułów:</label> -->
+                    <select id="group-article">
+                        <option value="">Wybierz grupę artykułów</option>
+                        <option value="zakupy spożywcze">zakupy spożywcze</option>
+                        <option value="rozrywka i sport">rozrywka i sport</option>
+                        <option value="rachunki stałe">rachunki stałe</option>
+                        <option value="ubrania">ubrania</option>
+                        <option value="pozostałe wydatki">pozostałe wydatki</option>
+                    </select>
+                </div>
+                <div class="addform-item">
+                    <!-- <label for="additional-information">Dodatkowy komentarz</label> -->
+                    <textarea id="additional-information" name="additional-information" placeholder="dodatkowy komentarz..."></textarea>
+                </div>
+                <div class="addform-item">
+                    <!-- <label for="date">Data</label> -->
+                    <input type="date" id="date">
+                </div>
+                <div class="addform-item">
+                    <button class="addform-item__button"><i class="far  fa-plus-square"></i></button>
+                </div>
+            </form>
+            <form class="balance">
+                <div class="balance-input">
+                    <!-- <label for="cost">kwota</label> -->
+                    <input type="number" id="balance" name="balance" placeholder="saldo">
+                    <button class="addform-item__button balance-item__button"><i class="far fa-plus-square"></i></button>
+                </div>
+            </form>
+        </div>
+
+        <section class="section-chart">
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="section-chart-btn">
+            <button class="chart-btn-hide">Ukryj wykres</button>
+        </div>
+        </section>
+
+        <section class="bill-section">
+            <div class="bill-section_area">
+                <h3 class="bill-section--balance">saldo: <span class="bill-section--balance_sum">0</span> zł</h3>
+                <p class="bill-section--balance_item1">Suma wydatków: <span class="bill-section--balance_expenses">0</span> zł</p>
+                <p class="bill-section--balance_item2">Suma przychodów: <span class="bill-section--balance_revenues">0</span> zł</p>
+            </div>
+        </section>
+
+        <div class="section-chart-btn">
+            <button class="chart-btn">Pokaż wykres</button>
+        </div>
+        
+        
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/chart.js"></script>
+</body>
+</html>
