@@ -83,6 +83,8 @@ const addNewBill = () => {
     newCost.appendChild(dateTextSection);
 
     const items = newCost.querySelectorAll('div');
+
+    
     for(const item of items) {
         item.classList.add('bill-section--new-item')
     }
