@@ -26,11 +26,13 @@ let sumOther = 0;
 let numberCost;
 const arrayNumbers = [];
 
-
+// SHOW INPUTS 
 
 const showInput = () => {
     inputSection.classList.toggle('input-section--show');
 }
+
+// FORM CHECK -----------------------
 
 const formCheck = (e) => {
     const formCheckVaild = document.querySelector('.formCheckVaild');
@@ -42,6 +44,8 @@ const formCheck = (e) => {
         formCheckVaild.style.display = "block";
     }
 }
+
+// ADD NEW BILL ------------------
 
 const addNewBill = () => {
     const billSection = document.querySelector('.bill-section');
@@ -102,7 +106,7 @@ const addNewBill = () => {
 
 }
 
-
+// ALL SUM OF COST -----------------
 
 const costSum = () => {
     const costTextValue = document.querySelectorAll('.bill-section-cost');
@@ -121,6 +125,7 @@ const costSum = () => {
     sum = 0;
 }
 
+// REDUCE BALANCE WHEN ADD BILL -------------
 
 const reduceBalance = () => {
     let balanceSectionEdit = document.querySelector('.bill-section--balance_sum');
@@ -129,6 +134,8 @@ const reduceBalance = () => {
     balanceSection.innerText = balance;
     console.log(balance);
 }
+
+// ADD BALLANCE ------------------
 
 const addBalance = (e) => {
     e.preventDefault();
@@ -149,6 +156,8 @@ const addBalance = (e) => {
       
 }
 
+// CATEGORY SUM -------------
+
 const allBillSum = () => {
     let groupArticleValue = groupArticle.selectedIndex;
     if(groupArticleValue == 1) {
@@ -167,11 +176,9 @@ const allBillSum = () => {
     console.log(groupArticleValue + "index");
 }
 
-
+// SHOW PIECHART ---------------
 
 const showChart = () => {
-    
-
     chartPie.classList.add('chart-container_show');
 }
 
@@ -179,6 +186,7 @@ const hideCart = () => {
     chartPie.classList.remove('chart-container_show');
 }
 
+// LISTENERY ------------
 
 chartBtnHide.addEventListener('click', hideCart);
 chartBtn.addEventListener('click', showChart);
