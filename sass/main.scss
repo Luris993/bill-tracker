@@ -212,6 +212,27 @@ body {
             height: 30px;
             border: none;
         }
+        
+        .btn-area {
+ 
+            button {
+                background: none;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                i {
+                    font-size: 3rem;
+                }
+
+                .fa-minus-circle {
+                    color: #c22424;
+                }
+
+                .fa-edit {
+                    color: $secondary-color; 
+                }
+            }
+        }
     }
 }
 

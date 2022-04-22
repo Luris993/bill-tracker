@@ -1,3 +1,4 @@
+
 const labels = [
     'Zakupy spożywcze',
     'Rozrywka i sport',

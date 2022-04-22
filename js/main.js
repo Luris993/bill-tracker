@@ -1,6 +1,6 @@
+
 const inputSection = document.querySelector('.input-section');
 const addInputSectionBtn = document.querySelector('.nav__items-button');
-
 const cost = document.querySelector('#cost');
 const groupArticle = document.querySelector('#group-article');
 const additionalInformation = document.querySelector('#additional-information');
@@ -9,11 +9,12 @@ const buttonAddCost = document.querySelector('.addform-item__button');
 const buttonAddBalance = document.querySelector('.balance-item__button');
 const balanceSection = document.querySelector('.bill-section--balance_sum');
 const balanceInput = document.querySelector('#balance');
-
 const chartPie = document.querySelector('.section-chart');
-
 const chartBtnHide = document.querySelector('.chart-btn-hide');
 const chartBtn = document.querySelector('.chart-btn');
+const billArea = document.querySelector('.bill-section');
+
+
 
 
 let sum = 0;
@@ -86,6 +87,18 @@ const addNewBill = () => {
     dateTextSection.appendChild(dateText);    
     newCost.appendChild(dateTextSection);
 
+    const btnArea = document.createElement('div');
+    btnArea.classList.add('btn-area');
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('remove-btn');
+    removeButton.innerHTML = '<i class="fas fa-minus-circle remove-btn"></i>';
+    const editButton = document.createElement('button');
+    editButton.innerHTML = '<i class="far fa-edit edit-btn"></i>'
+    editButton.classList.add('edit-btn');
+    btnArea.appendChild(removeButton);
+    btnArea.appendChild(editButton);
+    newCost.appendChild(btnArea);
+
     const items = newCost.querySelectorAll('div');
 
     
@@ -104,7 +117,13 @@ const addNewBill = () => {
     costSum(numberCost);
     addData();
 
+    
+
+
 }
+
+
+
 
 // ALL SUM OF COST -----------------
 
@@ -186,14 +205,52 @@ const hideCart = () => {
     chartPie.classList.remove('chart-container_show');
 }
 
+
+const handleClickDeleteOrEdit = e => {
+    if (e.target.matches('.remove-btn')) {
+        removeBill(e);
+    } 
+}
+
+const removeBill = e => {
+    const costSum = e.target.closest('.bill-section--new').children[0].firstElementChild.textContent;
+
+    const shopCategory = e.target.closest('.bill-section--new').children[1].firstElementChild.textContent;
+
+    if (shopCategory == 'zakupy spożywcze') {
+        sumShopping = sumShopping - Number(costSum);
+    } else if (shopCategory == 'rozrywka i sport') {
+        sumEntertainment = sumEntertainment - Number(costSum);
+    } else if (shopCategory == 'rachunki stałe') {
+        sumBills = sumBills - Number(costSum);
+    } else if (shopCategory == 'ubrania') {
+        sumClothes = sumClothes - Number(costSum);
+    } else if (shopCategory == 'pozostałe wydatki') {
+        sumOther = sumOther - Number(costSum);
+    }
+
+    addData();
+
+    console.log(Number(costSum));
+    console.log(shopCategory);
+
+    e.target.closest('.bill-section--new').remove();
+
+}
+
+
+
+
+// document.addEventListener('DOMContentLoaded', main);
+
 // LISTENERY ------------
 
+billArea.addEventListener('click', handleClickDeleteOrEdit);
 chartBtnHide.addEventListener('click', hideCart);
 chartBtn.addEventListener('click', showChart);
 addInputSectionBtn.addEventListener('click', showInput);
 buttonAddCost.addEventListener('click', formCheck);
 buttonAddBalance.addEventListener('click', addBalance);
-
 
 
 

@@ -249,6 +249,25 @@ body {
   border: none;
 }
 
+.bill-section .bill-section--new .btn-area button {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.bill-section .bill-section--new .btn-area button i {
+  font-size: 3rem;
+}
+
+.bill-section .bill-section--new .btn-area button .fa-minus-circle {
+  color: #c22424;
+}
+
+.bill-section .bill-section--new .btn-area button .fa-edit {
+  color: #5bccf6;
+}
+
 .section-chart {
   display: none;
   position: absolute;
