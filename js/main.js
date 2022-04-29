@@ -13,8 +13,21 @@ const chartPie = document.querySelector('.section-chart');
 const chartBtnHide = document.querySelector('.chart-btn-hide');
 const chartBtn = document.querySelector('.chart-btn');
 const billArea = document.querySelector('.bill-section');
+const expensesValue = document.querySelector('.bill-section--balance_expenses');
+const editPopup = document.querySelector('.edit-popup');
+const costEdit = document.querySelector('#cost-edit');
+const groupArticleEdit = document.querySelector('#group-article-edit');
+const additionalInformationEdit = document.querySelector('#additional-information-edit');
+const dateEdit = document.querySelector('#date-edit');
+const buttonEdit = document.querySelector('.addform-item__button-edit');
+const hidePopupBtn = document.querySelector('.edit-popup-hideBtn');
 
 
+
+let costSumOld; 
+let shopCategoryOld; 
+let additionalInformationOld; 
+let dateBillOld;
 
 
 let sum = 0;
@@ -205,17 +218,104 @@ const hideCart = () => {
     chartPie.classList.remove('chart-container_show');
 }
 
+// TOOL AREA BILL
 
 const handleClickDeleteOrEdit = e => {
     if (e.target.matches('.remove-btn')) {
         removeBill(e);
-    } 
+    } else if (e.target.matches('.edit-btn')) {
+        editBill(e)
+    }
 }
+
+// OPENING EDIT POPUP
+
+const editBill = e => {
+    costSumOld = e.target.closest('.bill-section--new').children[0].firstElementChild;
+    shopCategoryOld = e.target.closest('.bill-section--new').children[1].firstElementChild;
+    additionalInformationOld = e.target.closest('.bill-section--new').children[2].firstElementChild;
+    dateBillOld = e.target.closest('.bill-section--new').children[3].firstElementChild
+
+    
+    costEdit.value = costSumOld.textContent;
+    groupArticleEdit.value = shopCategoryOld.textContent;
+    additionalInformationEdit.value = additionalInformationOld.textContent;
+    dateEdit.value = dateBillOld.textContent;
+
+    editPopup.classList.add('edit-popup-show');
+}
+
+// ADDING EDIT BILL
+
+const changeBill = (e) => {
+    e.preventDefault();
+
+    let shopCategoryTextContent = shopCategoryOld.textContent;
+
+    if (shopCategoryTextContent == 'zakupy spożywcze') {
+        sumShopping = sumShopping - Number(costSumOld.textContent);
+    } else if (shopCategoryTextContent == 'rozrywka i sport') {
+        sumEntertainment = sumEntertainment - Number(costSumOld.textContent);
+    } else if (shopCategoryTextContent == 'rachunki stałe') {
+        sumBills = sumBills - Number(costSumOld.textContent);
+    } else if (shopCategoryTextContent == 'ubrania') {
+        sumClothes = sumClothes - Number(costSumOld.textContent);
+    } else if (shopCategoryTextContent == 'pozostałe wydatki') {
+        sumOther = sumOther - Number(costSumOld.textContent);
+    }
+
+    let balanceSectionSum = Number(balanceSection.textContent) + Number(costSumOld.textContent);
+    let balanceExpensesValue = Number(expensesValue.textContent) - Number(costSumOld.textContent);
+
+    expensesValue.innerText = balanceExpensesValue;
+    balanceSection.innerText = balanceSectionSum;
+
+    if (groupArticleEdit.value == 'zakupy spożywcze') {
+        sumShopping = sumShopping + Number(costEdit.value);
+    } else if (groupArticleEdit.value == 'rozrywka i sport') {
+        sumEntertainment = sumEntertainment +  Number(costEdit.value);
+    } else if (groupArticleEdit.value == 'rachunki stałe') {
+        sumBills = sumBills + Number(costEdit.value);
+    } else if (groupArticleEdit.value == 'ubrania') {
+        sumClothes = sumClothes +  Number(costEdit.value);
+    } else if (groupArticleEdit.value == 'pozostałe wydatki') {
+        sumOther = sumOther +  Number(costEdit.value);
+    }
+
+    balanceSectionSum = Number(balanceSection.textContent) - Number(costEdit.value);
+    balanceExpensesValue = Number(expensesValue.textContent) + Number(costEdit.value);
+
+    expensesValue.innerText = balanceExpensesValue;
+    balanceSection.innerText = balanceSectionSum;
+
+    addData();
+
+    costSumOld.innerText = costEdit.value;
+    shopCategoryOld.innerText = groupArticleEdit.value;
+    additionalInformationOld.innerText = additionalInformationEdit.value;
+    dateBillOld.innerText = dateEdit.value;
+
+
+    costEdit.value = '';
+    groupArticleEdit.value = '';
+    additionalInformationEdit.value = '';
+    dateEdit.value = '';
+
+    editPopup.classList.remove('edit-popup-show');
+
+}
+
+const hidePopup = () => {
+    editPopup.classList.remove('edit-popup-show');
+}
+
+// REMOVING BILL AND UPTADE NUMBERS
 
 const removeBill = e => {
     const costSum = e.target.closest('.bill-section--new').children[0].firstElementChild.textContent;
-
     const shopCategory = e.target.closest('.bill-section--new').children[1].firstElementChild.textContent;
+
+    
 
     if (shopCategory == 'zakupy spożywcze') {
         sumShopping = sumShopping - Number(costSum);
@@ -229,13 +329,15 @@ const removeBill = e => {
         sumOther = sumOther - Number(costSum);
     }
 
+    const balanceSectionSum = Number(balanceSection.textContent) + Number(costSum);
+    const balanceExpensesValue = Number(expensesValue.textContent) - Number(costSum);
+
+    expensesValue.innerText = balanceExpensesValue;
+    balanceSection.innerText = balanceSectionSum;
+
     addData();
 
-    console.log(Number(costSum));
-    console.log(shopCategory);
-
     e.target.closest('.bill-section--new').remove();
-
 }
 
 
@@ -244,13 +346,14 @@ const removeBill = e => {
 // document.addEventListener('DOMContentLoaded', main);
 
 // LISTENERY ------------
-
+hidePopupBtn.addEventListener('click', hidePopup);
 billArea.addEventListener('click', handleClickDeleteOrEdit);
 chartBtnHide.addEventListener('click', hideCart);
 chartBtn.addEventListener('click', showChart);
 addInputSectionBtn.addEventListener('click', showInput);
 buttonAddCost.addEventListener('click', formCheck);
 buttonAddBalance.addEventListener('click', addBalance);
+buttonEdit.addEventListener('click', changeBill);
 
 
 
